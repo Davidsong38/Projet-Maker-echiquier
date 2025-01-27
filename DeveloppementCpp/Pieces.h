@@ -9,11 +9,13 @@
 #include <vector>
 #include <memory>
 
+//#include "Chessboard.h"
 #include "Effect_List.h"
 
 
 
 using namespace std;
+
 
 class Pieces {
     protected:
@@ -53,9 +55,9 @@ class Pieces {
 
 
         [[nodiscard]] virtual vector<pair<int, int>> getMoves(int x, int y) const = 0;
-     //   virtual void passive() = 0;
-     //   virtual void CanEvolve() = 0;
-      //  virtual void EvolvedForm() = 0;
+     //   virtual void passive(void* context) = 0;
+     //   virtual void CanEvolve(void* context) = 0;
+      //  virtual void EvolvedForm(void* context) = 0;
 
 
 };

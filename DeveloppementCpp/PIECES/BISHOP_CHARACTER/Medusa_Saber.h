@@ -12,7 +12,7 @@ public:
     Medusa_Saber(int startX, int startY, const string &pieceName)
         : Bishop(startX, startY, pieceName) {
     }
-    [[nodiscard]] vector<pair<int, int>> getMovesMedusa_SaberStunEffect(int x, int y) const;
+    [[nodiscard]] static vector<pair<int, int>> getMovesMedusa_SaberStunEffect(int x, int y) ;
     void passive();
     void CanEvolved() ;
     void EvolvedForm() ;

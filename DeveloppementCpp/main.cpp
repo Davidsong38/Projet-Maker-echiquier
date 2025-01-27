@@ -4,12 +4,13 @@
 #include "EffectHandler.h"
 #include "Pieces.h"
 #include "PIECES/Bishop.h"
+#include "PIECES/BISHOP_CHARACTER/Medusa_Saber.h"
 
 int main() {
     Chessboard chessboard(8);
     loadEffectList();
     EffectHandler effect_handler;
-    Bishop rook(0,0,"rook");
+    Medusa_Saber rook(0,0,"rook");
     EffectHandler::configureEffectHandler(effect_handler, chessboard, &rook);
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;
     rook.addEffectStatus(TELEPORT,3,2);

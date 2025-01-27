@@ -52,13 +52,15 @@ bool Chessboard::isKillable(Pieces *piece) {
     return true;
 }
 
-void Chessboard::Kill(Pieces *piece, Pieces *target_piece, int coordX1, int coordY1, int coordX2, int coordY2) {
+bool Chessboard::KillCheck(Pieces *piece, Pieces *target_piece, int coordX1, int coordY1, int coordX2, int coordY2) {
     if (coordX1 == coordX2 && coordY1 == coordY2 && isKillable(target_piece)&& piece->getIsWhite() != target_piece->getIsWhite()) {
         grid[coordX2][coordY2] = nullptr;
         grid[coordX1][coordY1] = nullptr;
         grid[coordX2][coordY2] = piece;
         std::cout << piece->getName() << " killed" << target_piece->getName() << std::endl;
+        return true;
     }
+    return false;
 }
 
 bool Chessboard::isKilled(Pieces *piece) const {

@@ -4,7 +4,7 @@
 
 #include "Medusa_Saber.h"
 
-vector<pair<int, int> > Medusa_Saber::getMovesMedusa_SaberStunEffect(int x, int y) const {
+vector<pair<int, int> > Medusa_Saber::getMovesMedusa_SaberStunEffect(int x, int y) {
     vector<std::pair<int, int>> moves;
     if (x + 1 < 8 && y + 1 < 8) moves.emplace_back(x + 1, y + 1);
     if (x - 1 >= 0 && y + 1 < 8) moves.emplace_back(x - 1, y + 1);
