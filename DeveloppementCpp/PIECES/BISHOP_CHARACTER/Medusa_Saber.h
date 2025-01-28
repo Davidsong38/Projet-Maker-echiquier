@@ -15,7 +15,7 @@ public:
         : Bishop(startX, startY, pieceName) {
     }
     [[nodiscard]] vector<Effect_List> getCasterEffects() const override;
-    [[nodiscard]] vector<pair<int, int>> getEffectRange(Effect_List effect, int x, int y, const Chessboard& board) const override;
+    [[nodiscard]] vector<pair<int, int>> getEffectRange(Effect_List effect, int x, int y) const override;
     void passive(void* arg) override;
     bool canEvolve(void* arg) override ;
     void evolvedForm(void* arg) override ;

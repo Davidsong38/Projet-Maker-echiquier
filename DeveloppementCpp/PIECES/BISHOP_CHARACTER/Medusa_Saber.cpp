@@ -16,7 +16,7 @@ vector<Effect_List> Medusa_Saber::getCasterEffects() const {
 
 
 
-vector<pair<int, int> > Medusa_Saber::getEffectRange(Effect_List effect, int x, int y, const Chessboard &board) const {
+vector<pair<int, int> > Medusa_Saber::getEffectRange(Effect_List effect, int x, int y) const {
 
     vector<std::pair<int, int>> effect_range;
 

@@ -19,7 +19,6 @@ class EffectHandler {
         void addEffectBehavior(Effect_List effect, function<void()> behavior);
         static void configureEffectHandler(EffectHandler& handler, Chessboard& board, Pieces* piece);
         static void applyEffectToTargets(Pieces* caster_piece,Effect_List effect, Chessboard& board);
-
         explicit EffectHandler() = default;
 };
 

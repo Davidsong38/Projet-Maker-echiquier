@@ -14,10 +14,13 @@ int main() {
     Medusa_Saber bishop1 (1,1,"bishop1");
     Medusa_Saber bishop2 (2,2,"bishop2");
     EffectHandler::configureEffectHandler(effect_handler, chessboard, &rook);
+    EffectHandler::configureEffectHandler(effect_handler, chessboard, &bishop1);
+    EffectHandler::configureEffectHandler(effect_handler, chessboard, &bishop2);
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;
-    rook.addEffectStatus(TELEPORT,3,2);
-    rook.addEffectStatus(CHANGE_CONTROL,4,2);
-    effect_handler.executeEffect(TELEPORT,&rook);
+   // rook.addEffectStatus(TELEPORT,3,2);
+   // rook.addEffectStatus(CHANGE_CONTROL,4,2);
+   // effect_handler.executeEffect(TELEPORT,&rook);
+    chessboard.movePiece(&rook,1,1);
     rook.updateEffectStatus();
     rook.displayEffect();
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;

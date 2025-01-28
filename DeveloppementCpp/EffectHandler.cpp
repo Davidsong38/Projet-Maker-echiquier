@@ -42,7 +42,8 @@ void EffectHandler::applyEffectToTargets(Pieces *caster_piece, Effect_List effec
         int targetY = range.second;
         Pieces* target_piece = board.getGrid()[targetX][targetY];
         if (target_piece != nullptr) {
-            executeEffect(effect, target_piece);
+           // executeEffect(effect, target_piece);
+            target_piece->activateEffect(effect);
             std::cout << "Effect " << Effect_List_to_string[effect] << " applied to piece at (" << targetX << ", " << targetY << ")." << std::endl;
         }
     }
