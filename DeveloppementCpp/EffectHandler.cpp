@@ -34,3 +34,17 @@ void EffectHandler::configureEffectHandler(EffectHandler &handler, Chessboard &b
     });
 
 }
+
+void EffectHandler::applyEffectToTargets(Pieces *caster_piece, Effect_List effect, Chessboard &board) {
+    vector<pair<int,int>> effect_range = caster_piece->getEffectRange(effect, caster_piece->getCoordX(), caster_piece->getCoordY());
+    for (const auto &range: effect_range) {
+        int targetX = range.first;
+        int targetY = range.second;
+        Pieces* target_piece = board.getGrid()[targetX][targetY];
+        if (target_piece != nullptr) {
+            executeEffect(effect, target_piece);
+            std::cout << "Effect " << Effect_List_to_string[effect] << " applied to piece at (" << targetX << ", " << targetY << ")." << std::endl;
+        }
+    }
+
+}

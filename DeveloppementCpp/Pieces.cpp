@@ -17,11 +17,6 @@ string Pieces::getName() const {
 bool Pieces::getIsWhite() const {
     return isWhite;
 }
-/*void Pieces::EvolvedForm() {
-    if (!evolved) {
-        evolved = true;
-    }
-}*/
 
 int Pieces::getCoordX() const {
     return coordX;

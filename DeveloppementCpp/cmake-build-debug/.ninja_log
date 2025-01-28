@@ -28,3 +28,16 @@
 35	1020	7596441216870529	CMakeFiles/Chess.dir/EffectHandler.cpp.obj	5659b60357c6b24f
 4	1033	7596441216560523	CMakeFiles/Chess.dir/main.cpp.obj	20e7c9725a44a8c7
 1033	1170	7596441226853184	Chess.exe	47bb68ea0c29207d
+17	875	7597180865548198	CMakeFiles/Chess.dir/PIECES/Pawn.cpp.obj	9ef67c6f46a0f5f5
+26	876	7597180865638213	CMakeFiles/Chess.dir/PIECES/Queen.cpp.obj	3f4cbf6a7b67e80a
+32	877	7597180865698218	CMakeFiles/Chess.dir/PIECES/Knight.cpp.obj	6d2c072019166f62
+23	877	7597180865608197	CMakeFiles/Chess.dir/PIECES/Rook.cpp.obj	9770d3f81ab8b667
+29	878	7597180865668209	CMakeFiles/Chess.dir/PIECES/King.cpp.obj	7d82dc83bdda383
+20	957	7597180865578208	CMakeFiles/Chess.dir/PIECES/Bishop.cpp.obj	6496011d0b4d0cd1
+41	961	7597180865788217	CMakeFiles/Chess.dir/Pieces_List.cpp.obj	4f69fee574fac13d
+35	961	7597180865728209	CMakeFiles/Chess.dir/PIECES/BISHOP_CHARACTER/Medusa_Saber.cpp.obj	cc168f70369b3dbc
+14	1017	7597180865518233	CMakeFiles/Chess.dir/Pieces.cpp.obj	f0f7f78432811b01
+38	1021	7597180865758212	CMakeFiles/Chess.dir/Chessboard.cpp.obj	30ec4ab2109b25a8
+44	1136	7597180865828220	CMakeFiles/Chess.dir/EffectHandler.cpp.obj	5659b60357c6b24f
+9	1167	7597180865468200	CMakeFiles/Chess.dir/main.cpp.obj	20e7c9725a44a8c7
+1167	1438	7597180877048209	Chess.exe	47bb68ea0c29207d

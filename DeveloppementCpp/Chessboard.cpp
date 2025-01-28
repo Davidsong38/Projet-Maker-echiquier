@@ -12,14 +12,26 @@ void Chessboard::placePiece(int coordX,int coordY, Pieces* Pieces) {
 vector<vector<Pieces *>> Chessboard::getGrid() const {
     return grid;
 }
-void Chessboard::movePiece(int coordX, int coordY, int to_coordX, int to_coordY) {
+
+
+bool Chessboard::isMovePossible(Pieces* piece,int to_coordX, int to_coordY) {
+    int coordX = piece->getCoordX();
+    int coordY = piece->getCoordY();
     if (coordX >= 0 && coordX < grid.size() && coordY >= 0 && coordY < grid.size() &&
         to_coordX >= 0 && to_coordX < grid.size() && to_coordY >= 0 && to_coordY < grid.size()) {
-            
+        return true;
+    }
+    return false;
+}
 
-        Pieces* piece = grid[coordX][coordY];
+void Chessboard::movePiece(Pieces* piece, int to_coordX, int to_coordY) {
+    int coordX = piece->getCoordX();
+    int coordY = piece->getCoordY();
+    if (isMovePossible(piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr) {
+
+        grid[to_coordX][to_coordY] = grid[coordX][coordY] ;      // Place la pièce dans la nouvelle case
         grid[coordX][coordY] = nullptr; // Libère l'ancienne case
-        grid[to_coordX][to_coordY] = piece;       // Place la pièce dans la nouvelle case
+        piece->setPosition(to_coordX, to_coordY);
 
         std::cout << "Piece moved from (" << coordX << ", " << coordY
                   << ") to (" << to_coordX << ", " << to_coordY << ")." << std::endl;
@@ -52,7 +64,11 @@ bool Chessboard::isKillable(Pieces *piece) {
     return true;
 }
 
-bool Chessboard::KillCheck(Pieces *piece, Pieces *target_piece, int coordX1, int coordY1, int coordX2, int coordY2) {
+bool Chessboard::KillCheck(Pieces *piece, Pieces *target_piece) {
+    int coordX1 = piece->getCoordX();
+    int coordY1 = piece->getCoordY();
+    int coordX2 = target_piece->getCoordX();
+    int coordY2 = target_piece->getCoordY();
     if (coordX1 == coordX2 && coordY1 == coordY2 && isKillable(target_piece)&& piece->getIsWhite() != target_piece->getIsWhite()) {
         grid[coordX2][coordY2] = nullptr;
         grid[coordX1][coordY1] = nullptr;

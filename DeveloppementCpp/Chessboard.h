@@ -22,11 +22,12 @@ class Chessboard {
     public:
         explicit Chessboard(int size) : grid(size, vector<Pieces*>(size, nullptr)) {};
         void placePiece(int coordX, int coordY, Pieces* piece);
-        void movePiece(int coordX, int coordY,int to_coordX,int to_coordY);
-        bool KillCheck(Pieces* piece,Pieces* target_piece,int coordX1, int coordY1,int coordX2, int coordY2);
+        bool isMovePossible(Pieces* piece,int to_coordX, int to_coordY); // vérifie si le movement est dans le plateau, qu'il n'est pas sur un allié et que la pièce possède ce movement
+        void movePiece(Pieces* piece,int to_coordX,int to_coordY);
+        bool KillCheck(Pieces* piece,Pieces* target_piece);
         void displayBoard() const;
-        static bool isKillable(Pieces* piece) ; // vérifie si la pièce peut être tué
-        static bool isMoveable(Pieces* piece) ; // vérifie si la pièce peut être déplacer
+        static bool isKillable(Pieces* piece) ; // vérifie si la pièce peut être tué ( ne possède pas d'effet qui la protège)
+        static bool isMoveable(Pieces* piece) ; // vérifie si la pièce n'est pas affecté par des effets d'immobilisation
         bool isKilled(Pieces* piece) const; // vérifie si la pièce est morte
 
         [[nodiscard]] vector<vector<Pieces *>> getGrid() const;

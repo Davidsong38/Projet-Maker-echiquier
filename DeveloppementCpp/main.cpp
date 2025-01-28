@@ -11,6 +11,8 @@ int main() {
     loadEffectList();
     EffectHandler effect_handler;
     Medusa_Saber rook(0,0,"rook");
+    Medusa_Saber bishop1 (1,1,"bishop1");
+    Medusa_Saber bishop2 (2,2,"bishop2");
     EffectHandler::configureEffectHandler(effect_handler, chessboard, &rook);
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;
     rook.addEffectStatus(TELEPORT,3,2);

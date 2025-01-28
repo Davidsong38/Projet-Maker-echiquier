@@ -5,6 +5,7 @@
 #ifndef CONTEXT_H
 #define CONTEXT_H
 #include "Chessboard.h"
+#include "EffectHandler.h"
 #include "Pieces.h"
 
 struct context_type {
