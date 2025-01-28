@@ -42,8 +42,10 @@ bool Chessboard::isInGrid(Pieces *piece, int to_coordX, int to_coordY) const {
 
 
 
-bool Chessboard::isMovePossible(Pieces* piece,Pieces* target_piece,int to_coordX, int to_coordY) const {
-    if (isInGrid(piece,to_coordX,to_coordY)&& isPiecePossessMove(piece,to_coordX,to_coordY) && !isAlly(piece,target_piece)) {
+bool Chessboard::isMovePossible(Pieces* piece,int to_coordX, int to_coordY) const {
+    if (isInGrid(piece,to_coordX,to_coordY)
+        && isPiecePossessMove(piece,to_coordX,to_coordY)
+        && (grid[to_coordX][to_coordY] == nullptr || !isAlly(piece,grid[to_coordX][to_coordY]))) {
         return true;
     }
     return false;
@@ -52,17 +54,18 @@ bool Chessboard::isMovePossible(Pieces* piece,Pieces* target_piece,int to_coordX
 void Chessboard::movePiece(Pieces* piece,Pieces* target_piece, int to_coordX, int to_coordY) {
     int coordX = piece->getCoordX();
     int coordY = piece->getCoordY();
-    if (isMovePossible(piece,target_piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr) {
-        KillCheck(piece,target_piece);
+    if (isMovePossible(piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr) {
+        //KillCheck(piece,target_piece);
         grid[to_coordX][to_coordY] = grid[coordX][coordY] ;      // Place la pièce dans la nouvelle case
         grid[coordX][coordY] = nullptr; // Libère l'ancienne case
         piece->setPosition(to_coordX, to_coordY);
 
         std::cout << "Piece moved from (" << coordX << ", " << coordY
                   << ") to (" << to_coordX << ", " << to_coordY << ")." << std::endl;
-        } else {
-            std::cout << "Move out of bounds!" << std::endl;
         }
+    //else {
+    //        std::cout << "Move out of bounds!" << std::endl;
+    //    }
 }
 
 
