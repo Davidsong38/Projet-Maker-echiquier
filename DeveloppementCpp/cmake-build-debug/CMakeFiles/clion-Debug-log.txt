@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2024.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.3.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\david\OneDrive\Bureau\Chess\Projet-Maker-echiquier\DeveloppementCpp -B C:\Users\david\OneDrive\Bureau\Chess\Projet-Maker-echiquier\DeveloppementCpp\cmake-build-debug
--- Configuring done (0.3s)
--- Generating done (0.0s)
--- Build files have been written to: C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2024.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\david\OneDrive\Bureau\CHESS\Projet-Maker-echiquier\DeveloppementCpp -B C:\Users\david\OneDrive\Bureau\CHESS\Projet-Maker-echiquier\DeveloppementCpp\cmake-build-debug
+-- Configuring done (2.9s)
+-- Generating done (2.9s)
+-- Build files have been written to: C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug

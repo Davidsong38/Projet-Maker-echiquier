@@ -50,6 +50,7 @@ void Medusa_Saber::passive(void* arg) {
     if (context->chessboard->KillCheck(context->piece,context->target_piece)) {
         EffectHandler::applyEffectToTargets(context->piece,STUN,*context->chessboard);
         CNT_StunEffect++;
+
     }
 }
 

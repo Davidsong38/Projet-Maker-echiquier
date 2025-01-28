@@ -53,7 +53,7 @@ class Pieces {
         [[nodiscard]] const vector<EffectInstance>& getActive_effects() const;
 
 
-
+        [[nodiscard]] virtual vector<pair<int, int>> getMoves(int x, int y) const = 0;
         [[nodiscard]] virtual vector<pair<int, int>> getEffectRange(Effect_List effect, int x, int y, const Chessboard& board) const = 0;
         [[nodiscard]] virtual vector<Effect_List> getCasterEffects() const = 0;
         virtual void passive(void* context) = 0;
