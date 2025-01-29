@@ -13,12 +13,16 @@ using namespace std;
 
 class EffectHandler {
     private:
-        unordered_map<Effect_List, function<void()>> effectBehaviors;
+        static unordered_map<Effect_List, function<void()>> effectBehaviors;
     public:
-        void executeEffect(Effect_List Effect,Pieces* pieces);
-        void addEffectBehavior(Effect_List effect, function<void()> behavior);
+        static void executeEffect(Effect_List Effect,Pieces* pieces);
+        static void addEffectBehavior(Effect_List effect, function<void()> behavior);
         static void configureEffectHandler(EffectHandler& handler, Chessboard& board, Pieces* piece);
         static void applyEffectToTargets(Pieces* caster_piece,EffectInstance effect_instance, Chessboard& board);
+        static bool validTargetGettingEffect(Pieces *caster_piece, Pieces * target_piece, EffectInstance effect_instance);
+        static bool isEffectTargetInGrid(Pieces * target_piece, Chessboard &board);
+        static bool isTriggerEffect(Effect_List effect);
+        static bool isBuff(Effect_List effect);
         explicit EffectHandler() = default;
 };
 

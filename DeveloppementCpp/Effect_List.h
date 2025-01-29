@@ -20,7 +20,7 @@ enum Effect_List{
      IMMUNITY_EFFECT,
      IMMUNITY_AOE,
      SPAWN_PIECES,
-     ONE_MORE_TURN,
+     ONE_MORE_MOVE,
      SUPP_MOVE,
      SUPP_RANGE,
      MOVE_CHANGING,
@@ -28,7 +28,8 @@ enum Effect_List{
      IMMORTALITY,
      SACRIFICE,
      KILLING,
-     TELEPORT,
+     ALLY_TELEPORT,
+     ENEMY_TELEPORT,
      EVOLVE,
      SUPP_LUCK,
      EFFECT_COUNT,
@@ -37,6 +38,9 @@ enum Effect_List{
 };
 
 extern string Effect_List_to_string[EFFECT_COUNT];
+extern bool isBuff_List[EFFECT_COUNT];
+extern bool isTriggerEffect_List[EFFECT_COUNT];
+
 void loadEffectList();
 
 
