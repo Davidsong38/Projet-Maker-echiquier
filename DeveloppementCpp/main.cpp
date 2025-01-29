@@ -14,7 +14,7 @@ int main() {
     EffectHandler effect_handler;
     Medusa_Saber rook(0,0,"rook",true);
     Medusa_Saber bishop1 (1,1,"bishop1",false);
-    Medusa_Saber bishop2 (2,2,"bishop2",false);
+    Medusa_Saber bishop2 (2,2,"bishop2",true);
     Medusa_Saber bishop3 (3,3,"bishop2",false);
     chessboard.placePiece(rook.getCoordX(), rook.getCoordY(), &rook);
     chessboard.placePiece(bishop1.getCoordX(), bishop1.getCoordY(), &bishop1);
@@ -26,14 +26,14 @@ int main() {
     EffectHandler::configureEffectHandler(effect_handler, chessboard, &bishop1);
     EffectHandler::configureEffectHandler(effect_handler, chessboard, &bishop2);
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;
-    context_type context{&rook,&bishop2,&chessboard};
+    context_type context{&rook,&bishop1,&chessboard};
    // rook.addEffectStatus(TELEPORT,3,2);
    // rook.addEffectStatus(CHANGE_CONTROL,4,2);
    // effect_handler.executeEffect(TELEPORT,&rook);
 
     //chessboard.movePiece(&rook,1,1);
-    chessboard.movePiece(&rook,2,2);
-    if (chessboard.isKilled(&bishop2)) {
+    chessboard.movePiece(&rook,1,1);
+    if (chessboard.isKilled(&bishop1)) {
         rook.passive(&context);
     }
     rook.updateEffectStatus();
@@ -42,6 +42,7 @@ int main() {
     bishop2.displayEffect();
     bishop3.displayEffect();
     bishop1.updateEffectStatus();
+    bishop2.updateEffectStatus();
     bishop3.updateEffectStatus();
     bishop1.displayEffect();
     bishop2.displayEffect();

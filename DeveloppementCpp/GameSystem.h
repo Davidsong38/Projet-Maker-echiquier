@@ -4,18 +4,42 @@
 
 #ifndef GAMESYSTEM_H
 #define GAMESYSTEM_H
+#include "Pieces.h"
 
 
-class GameSystem {
-public:
-    void White_turn();
-    void Black_turn();
-    void Turn();
-    void Beginning();
-    void End();
-    
+enum GameSystem {
+    INITIALISATION,
+    START_TURN,
+    MOVING_PHASE,
+    CHECKING_PHASE,
+    END_TURN,
+    END_GAME,
+};
+
+class GameSystemFunction {
+
+    private:
+        int NB_Turn = 0;
+    public:
+        void pieceInitialisation();
+        void chooseWhiteRook(Pieces* piece);
+        void chooseBlackRook(Pieces* piece);
+        void chooseWhitePawn(Pieces* piece);
+        void chooseBlackPawn(Pieces* piece);
+        void chooseWhiteKnight(Pieces* piece);
+        void chooseBlackKnight(Pieces* piece);
+        void chooseWhiteBishop(Pieces* piece);
+        void chooseBlackBishop(Pieces* piece);
+        void chooseWhiteQueen(Pieces* piece);
+        void chooseBlackQueen(Pieces* piece);
+        void chooseWhiteKing(Pieces* piece);
+        void chooseBlackKing(Pieces* piece);
+        void Initialisation();
+        void CheckEffect();
 
 };
+
+
 
 
 
