@@ -9,6 +9,7 @@
 
 #include "Effect_List.h"
 #include "Pieces.h"
+
 using namespace std;
 
 
@@ -23,6 +24,7 @@ class Chessboard {
         explicit Chessboard(int size) : grid(size, vector<Pieces*>(size, nullptr)) {};
         void placePiece(int coordX, int coordY, Pieces* piece);
         bool isMovePossible(Pieces* piece,int to_coordX, int to_coordY) const; // vérifie si le movement est dans le plateau, qu'il n'est pas sur un allié et que la pièce possède ce movement
+        vector<pair<int, int>> getValidMoves(Pieces* piece) const;
         void movePiece(Pieces* piece,int to_coordX,int to_coordY);
         bool KillCheck(Pieces* piece,Pieces* target_piece);
         void displayBoard() const;
@@ -30,8 +32,8 @@ class Chessboard {
         static bool isMoveable(Pieces* piece) ; // vérifie si la pièce n'est pas affecté par des effets d'immobilisation
         bool isKilled(Pieces* piece) const; // vérifie si la pièce est morte
         static bool isAlly(Pieces* piece, Pieces* target_piece);
-        static bool isPiecePossessMove(Pieces* piece,int to_coordX, int to_coordY);
-        bool isInGrid(Pieces* piece, int to_coordX, int to_coordY) const;
+        bool isPathClear(int startX, int startY, int endX, int endY, Pieces* piece) const ;
+        [[nodiscard]] bool isInGrid(int to_coordX, int to_coordY) const;
         [[nodiscard]] vector<vector<Pieces *>> getGrid() const;
 };
 

@@ -5,8 +5,10 @@
 #include "Chessboard.h"
 
 
-void Chessboard::placePiece(int coordX,int coordY, Pieces* Pieces) {
-    grid[coordX][coordY] = Pieces;
+void Chessboard::placePiece(int to_coordX,int to_coordY, Pieces* piece) {
+    if (to_coordX >= 0 && to_coordX < grid.size() && to_coordY >= 0 && to_coordY < grid.size()) {
+        grid[to_coordX][to_coordY] = piece;
+    }
 }
 
 vector<vector<Pieces *>> Chessboard::getGrid() const {
@@ -20,33 +22,68 @@ bool Chessboard::isAlly(Pieces *piece, Pieces *target_piece) {
     return false;
 }
 
-bool Chessboard::isPiecePossessMove(Pieces *piece, int to_coordX, int to_coordY) {
-    for (const auto& moves : piece->getMoves(piece->getCoordX(),piece->getCoordY())) {
-        if (moves.first == to_coordX && moves.second == to_coordY) {
-            return true;
-        }
-    }
-    return false;
-}
 
-bool Chessboard::isInGrid(Pieces *piece, int to_coordX, int to_coordY) const {
-    int coordX = piece->getCoordX();
-    int coordY = piece->getCoordY();
-    if (coordX >= 0 && coordX < grid.size() && coordY >= 0 && coordY < grid.size() &&
-            to_coordX >= 0 && to_coordX < grid.size() && to_coordY >= 0 && to_coordY < grid.size()) {
+bool Chessboard::isInGrid(int to_coordX, int to_coordY) const {
+    if (to_coordX >= 0 && to_coordX < grid.size() && to_coordY >= 0 && to_coordY < grid.size()) {
         return true;
     }
     return false;
 }
 
+bool Chessboard::isPathClear(int startX, int startY, int endX, int endY, Pieces* piece) const {
+    int dx = (endX - startX) == 0 ? 0 : (endX - startX) / abs(endX - startX);  // Direction en X
+    int dy = (endY - startY) == 0 ? 0 : (endY - startY) / abs(endY - startY);  // Direction en Y
+
+    int x = startX + dx;
+    int y = startY + dy;
+
+    // Parcours des cases intermédiaires
+    while (x != endX || y != endY) {
+        Pieces* currentPiece = grid[x][y];
+
+        // Si la case contient une pièce
+        if (currentPiece != nullptr && !piece->isCheating()) {
+            // Si c'est une pièce alliée, on bloque le mouvement
+            if (isAlly(piece, currentPiece)) {
+                return false;
+            }
+            // Si c'est une pièce ennemie, on ne bloque que si la destination n'est pas cette pièce
+            if (x != endX || y != endY) {
+                return false;  // Ne peut pas passer au travers d'une pièce ennemie
+            }
+        }
+
+        // Avance vers la prochaine case
+        x += dx;
+        y += dy;
+    }
+
+    return true;  // Le chemin est libre
+}
+
+
+vector<pair<int, int>> Chessboard::getValidMoves(Pieces* piece) const {
+    vector<pair<int, int>> valid_moves;
+    vector<pair<int, int>> piece_moves = piece->getMoves();
+    for (const auto& move : piece_moves) {
+        int to_coordX = move.first;
+        int to_coordY = move.second;
+        if (isInGrid(to_coordX, to_coordY) && (grid[to_coordX][to_coordY] == nullptr || !isAlly(piece,grid[to_coordX][to_coordY]))
+            && isPathClear(piece->getCoordX(),piece->getCoordY(),to_coordX,to_coordY,piece)) {
+            valid_moves.emplace_back(move);
+
+        }
+    }
+    return valid_moves;
+}
 
 
 
 bool Chessboard::isMovePossible(Pieces* piece,int to_coordX, int to_coordY) const {
-    if (isInGrid(piece,to_coordX,to_coordY)
-        && isPiecePossessMove(piece,to_coordX,to_coordY)
-        && (grid[to_coordX][to_coordY] == nullptr || !isAlly(piece,grid[to_coordX][to_coordY]))) {
-        return true;
+    for (const auto& moves : getValidMoves(piece)) {
+        if (moves.first == to_coordX && moves.second == to_coordY) {
+            return true;
+        }
     }
     return false;
 }

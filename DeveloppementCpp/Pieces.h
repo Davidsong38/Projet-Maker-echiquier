@@ -9,7 +9,6 @@
 #include <vector>
 #include <memory>
 
-
 #include "Effect_List.h"
 
 
@@ -19,11 +18,11 @@ using namespace std;
 
 class Pieces {
     protected:
-        int coordX{};
-        int coordY{};
+        int coordX;
+        int coordY;
         string name;
         bool isWhite = false;
-        bool evolved{};
+        bool evolved = false;
         vector<EffectInstance> activeEffects ;
 
 
@@ -53,10 +52,10 @@ class Pieces {
         [[nodiscard]] vector<EffectInstance> getActive_effects() const;
 
 
-        [[nodiscard]] virtual vector<pair<int, int>> getMoves(int x, int y) const = 0;
-        [[nodiscard]] virtual vector<pair<int, int>> getEffectRange(Effect_List effect, int x, int y) const = 0;
+        [[nodiscard]] virtual vector<pair<int, int>> getMoves() const = 0;
+        [[nodiscard]] virtual vector<pair<int, int>> getEffectRange(Effect_List effect) const = 0;
         [[nodiscard]] virtual vector<Effect_List> getCasterEffects() const = 0;
-
+        [[nodiscard]] virtual bool isCheating () const {return false;}
         virtual void passive(void* context) = 0;
         virtual bool canEvolve(void* context) = 0;
         virtual void evolvedForm(void* context) = 0;

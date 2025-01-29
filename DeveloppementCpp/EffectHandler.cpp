@@ -61,7 +61,7 @@ bool EffectHandler::isEffectTargetInGrid(Pieces * target_piece, Chessboard &boar
 }
 
 void EffectHandler::applyEffectToTargets(Pieces *caster_piece, EffectInstance effect_instance, Chessboard &board) {
-    vector<pair<int,int>> effect_range = caster_piece->getEffectRange(effect_instance.getEffect(), caster_piece->getCoordX(), caster_piece->getCoordY());
+    vector<pair<int,int>> effect_range = caster_piece->getEffectRange(effect_instance.getEffect());
     for (const auto &range: effect_range) {
         int targetX = range.first;
         int targetY = range.second;

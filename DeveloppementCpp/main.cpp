@@ -13,7 +13,7 @@ int main() {
     loadEffectList();
     EffectHandler effect_handler;
     Medusa_Saber rook(0,0,"rook",true);
-    Medusa_Saber bishop1 (1,1,"bishop1",true);
+    Medusa_Saber bishop1 (1,1,"bishop1",false);
     Medusa_Saber bishop2 (2,2,"bishop2",false);
     Medusa_Saber bishop3 (3,3,"bishop2",false);
     chessboard.placePiece(rook.getCoordX(), rook.getCoordY(), &rook);
@@ -48,7 +48,7 @@ int main() {
     bishop2.displayEffect();
     bishop3.displayEffect();
     std::cout << rook.getCoordX() << " " << rook.getCoordY() << std::endl;
-    auto moves = rook.getMoves(rook.getCoordX(), rook.getCoordY());
+    auto moves = rook.getMoves();
 
     for (const auto& move : moves) {
         std::cout << "(" << move.first << ", " << move.second << ")\n";

@@ -14,7 +14,7 @@ class Bishop : public Pieces{
         : Pieces(startX, startY, pieceName, white) {
     }
 
-    [[nodiscard]] vector<pair<int, int>> getMoves(int x, int y) const override;
+    [[nodiscard]] vector<pair<int, int>> getMoves() const override;
 
 };
 

@@ -16,29 +16,29 @@ vector<Effect_List> Medusa_Saber::getCasterEffects() const {
 
 
 
-vector<pair<int, int> > Medusa_Saber::getEffectRange(Effect_List effect, int x, int y) const {
+vector<pair<int, int> > Medusa_Saber::getEffectRange(Effect_List effect) const {
 
     vector<std::pair<int, int>> effect_range;
 
     if (effect == STUN) {
-        if (x + 1 < 8 && y + 1 < 8) effect_range.emplace_back(x + 1, y + 1);
-        if (x - 1 >= 0 && y + 1 < 8) effect_range.emplace_back(x - 1, y + 1);
-        if (x + 1 < 8 && y - 1 >= 0) effect_range.emplace_back(x + 1, y - 1);
-        if (x - 1 >= 0 && y - 1 >= 0) effect_range.emplace_back(x - 1, y - 1);
+        if (coordX + 1 < 8 && coordY + 1 < 8) effect_range.emplace_back(coordX + 1, coordY + 1);
+        if (coordX - 1 >= 0 && coordY + 1 < 8) effect_range.emplace_back(coordX - 1, coordY + 1);
+        if (coordX + 1 < 8 && coordY - 1 >= 0) effect_range.emplace_back(coordX + 1, coordY - 1);
+        if (coordX - 1 >= 0 && coordY - 1 >= 0) effect_range.emplace_back(coordX - 1, coordY - 1);
     }
     if (evolved==true) {
         if (effect == STUN) {
-            if (x + 1 < 8) effect_range.emplace_back(x + 1, y);
-            if (x - 1 >= 0) effect_range.emplace_back(x - 1, y);
-            if (y - 1 >= 0) effect_range.emplace_back(x, y - 1);
-            if (y + 1 >= 0) effect_range.emplace_back(x, y + 1);
+            if (coordX + 1 < 8) effect_range.emplace_back(coordX + 1, coordY);
+            if (coordX - 1 >= 0) effect_range.emplace_back(coordX - 1, coordY);
+            if (coordY - 1 >= 0) effect_range.emplace_back(coordX, coordY - 1);
+            if (coordY + 1 < 8) effect_range.emplace_back(coordX, coordY + 1);
 
         }
         if (effect == AOE) {
-            if (x + 1 < 8 && y + 1 < 8) effect_range.emplace_back(x + 1, y + 1);
-            if (x - 1 >= 0 && y + 1 < 8) effect_range.emplace_back(x - 1, y + 1);
-            if (x + 1 < 8 && y - 1 >= 0) effect_range.emplace_back(x + 1, y - 1);
-            if (x - 1 >= 0 && y - 1 >= 0) effect_range.emplace_back(x - 1, y - 1);
+            if (coordX + 1 < 8 && coordY + 1 < 8) effect_range.emplace_back(coordX + 1, coordY + 1);
+            if (coordX - 1 >= 0 && coordY + 1 < 8) effect_range.emplace_back(coordX - 1, coordY + 1);
+            if (coordX + 1 < 8 && coordY - 1 >= 0) effect_range.emplace_back(coordX + 1, coordY - 1);
+            if (coordX - 1 >= 0 && coordY - 1 >= 0) effect_range.emplace_back(coordX - 1, coordY - 1);
         }
     }
     return effect_range;

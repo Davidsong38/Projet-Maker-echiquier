@@ -3,7 +3,6 @@
 //
 
 #include "Pieces.h"
-
 #include <iostream>
 #include <utility>
 #include "Effect_List.h"
