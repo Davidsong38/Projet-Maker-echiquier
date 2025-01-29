@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug"
+			"value" : "c:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -559,7 +559,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1267,7 +1267,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug"
+			"value" : "C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug"
 		},
 		{
 			"name" : "Chess_IS_TOP_LEVEL",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp"
+			"value" : "C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

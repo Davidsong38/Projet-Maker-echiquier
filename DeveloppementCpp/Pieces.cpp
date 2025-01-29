@@ -29,8 +29,8 @@ void Pieces::setPosition(int newX, int newY) {
     coordY = newY;
 }
 
-void Pieces::addEffectStatus(Effect_List effect, int effect_duration, int effect_amount) {
-    activeEffects.emplace_back(effect,effect_duration,effect_amount);
+void Pieces::addEffectStatus(EffectInstance effect_instance) {
+    activeEffects.emplace_back(effect_instance.getEffect(),effect_instance.getEffectDuration(),effect_instance.getEffectDuration());
 }
 
 bool Pieces::hasEffectStatus(Effect_List effect) const {
@@ -54,8 +54,11 @@ void Pieces::updateEffectStatus() {
     }
 }
 void Pieces::activateEffect(Effect_List effect) {
+    std::cout << "Yaharo0000"<<std::endl;
     for ( auto& e : activeEffects) {
+        std::cout << Effect_List_to_string[e.effect] << "Yaharo"<<std::endl;
         if (e.effect == effect && !e.isExpired()) {
+            std::cout << Effect_List_to_string[e.effect] << std::endl;
             e.activation();
             std::cout << "Effect " << Effect_List_to_string[e.effect] << " activated on piece!" << std::endl;
 
@@ -72,7 +75,7 @@ void Pieces::displayEffect() {
     }
 }
 
-    const vector<EffectInstance> &Pieces::getActive_effects() const {
+vector<EffectInstance> Pieces::getActive_effects() const {
     return activeEffects;
 }
 

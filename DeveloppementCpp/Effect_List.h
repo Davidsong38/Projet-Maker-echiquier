@@ -47,6 +47,18 @@ struct EffectInstance {
 
     explicit EffectInstance(Effect_List effect, int effect_duration = -1, int effect_amount = -1);
 
+    [[nodiscard]] Effect_List getEffect() const {
+        return effect;
+    }
+
+    [[nodiscard]] int getEffectDuration() const {
+        return effect_duration;
+    }
+
+    [[nodiscard]] int getEffectAmount() const {
+        return effect_amount;
+    }
+
     [[nodiscard]] bool isInfinite() const;
     [[nodiscard]] bool isExpired() const;
     void activation();

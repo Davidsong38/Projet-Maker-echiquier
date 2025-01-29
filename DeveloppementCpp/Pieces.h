@@ -42,7 +42,7 @@ class Pieces {
         [[nodiscard]] int getCoordY() const;
         void setPosition(int newX,int newY);
 
-        void addEffectStatus (Effect_List effect, int effect_duration = -1, int effect_amount = -1);
+        void addEffectStatus (EffectInstance effect_instance);
         [[nodiscard]] bool hasEffectStatus (Effect_List effect) const;
         void updateEffectStatus ();
         void activateEffect(Effect_List);
@@ -50,7 +50,7 @@ class Pieces {
 
         [[nodiscard]] bool getIsWhite() const;
 
-        [[nodiscard]] const vector<EffectInstance>& getActive_effects() const;
+        [[nodiscard]] vector<EffectInstance> getActive_effects() const;
 
 
         [[nodiscard]] virtual vector<pair<int, int>> getMoves(int x, int y) const = 0;

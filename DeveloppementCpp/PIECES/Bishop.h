@@ -9,8 +9,9 @@
 
 class Bishop : public Pieces{
     public:
-    Bishop(int startX, int startY, const string &pieceName)
-        : Pieces(startX, startY, pieceName) {
+
+    Bishop(int startX, int startY, const string &pieceName, bool white)
+        : Pieces(startX, startY, pieceName, white) {
     }
 
     [[nodiscard]] vector<pair<int, int>> getMoves(int x, int y) const override;

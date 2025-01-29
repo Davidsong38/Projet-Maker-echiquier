@@ -57,7 +57,7 @@ void Chessboard::movePiece(Pieces* piece, int to_coordX, int to_coordY) {
     if (isMovePossible(piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr) {
         Pieces* target_piece = grid[to_coordX][to_coordY];
         if (target_piece == nullptr) {
-            grid[to_coordX][to_coordY] = grid[coordX][coordY] ;      // Place la pièce dans la nouvelle case
+            grid[to_coordX][to_coordY] = piece ;      // Place la pièce dans la nouvelle case
             grid[coordX][coordY] = nullptr; // Libère l'ancienne case
             piece->setPosition(to_coordX, to_coordY);
         } else {
@@ -88,20 +88,20 @@ bool Chessboard::KillCheck(Pieces *piece, Pieces *target_piece) {
     int coordY1 = piece->getCoordY();
     int coordX2 = target_piece->getCoordX();
     int coordY2 = target_piece->getCoordY();
-    if (coordX1 == coordX2 && coordY1 == coordY2 && isKillable(target_piece)&& !isAlly(piece,target_piece)) {
-        grid[coordX2][coordY2] = nullptr;
+    if (isKillable(target_piece)&& !isAlly(piece,target_piece)) {
+        grid[coordX2][coordY2] = piece;
         grid[coordX1][coordY1] = nullptr;
         piece->setPosition(coordX2,coordY2);
-        std::cout << piece->getName() << " killed" << target_piece->getName() << std::endl;
+        std::cout << piece->getName() << " killed " << target_piece->getName() << std::endl;
         return true;
     }
     return false;
 }
 
 bool Chessboard::isKilled(Pieces *piece) const {
-    for (int i = 0; i < grid.size(); i++) {
-        for (int j = 0; j < grid[i].size(); j++) {
-            if (grid[i][j] != piece) {
+    for (const auto &row : grid) {
+        for (const auto &cell : row) {
+            if (cell == piece) {
                 return false;
             }
         }
@@ -112,21 +112,22 @@ bool Chessboard::isKilled(Pieces *piece) const {
 bool Chessboard::isMoveable( Pieces* piece) {
     for (const auto& e : piece->getActive_effects()) {
         if (e.effect == STUN) {
-            return true;
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 
 void Chessboard::displayBoard() const {
-    for (int i = 0; i < grid.size(); i++) {
-        for (int j = 0; j < grid[i].size(); j++) {
-            if (grid[i][j] != nullptr) {
-                cout << grid[i][j]->getName() << " ";
+    for (const auto &row : grid) {
+        for (const auto &cell : row) {
+            if (cell != nullptr) {
+                cout << cell->getName() << " ";
             } else {
                 cout << ". ";
             }
+
         }
         cout << endl;
     }

@@ -11,9 +11,10 @@ class Medusa_Saber final : public Bishop{
 protected :
     int CNT_StunEffect = 0;
 public:
-    Medusa_Saber(int startX, int startY, const string &pieceName)
-        : Bishop(startX, startY, pieceName) {
+    Medusa_Saber(int startX, int startY, const string &pieceName, bool white)
+        : Bishop(startX, startY, pieceName, white) {
     }
+
     [[nodiscard]] vector<Effect_List> getCasterEffects() const override;
     [[nodiscard]] vector<pair<int, int>> getEffectRange(Effect_List effect, int x, int y) const override;
     void passive(void* arg) override;

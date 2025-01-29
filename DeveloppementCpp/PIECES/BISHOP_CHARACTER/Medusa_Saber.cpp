@@ -48,14 +48,16 @@ vector<pair<int, int> > Medusa_Saber::getEffectRange(Effect_List effect, int x, 
 void Medusa_Saber::passive(void* arg) {
     auto * context = static_cast<context_type *>(arg);
     if (context->chessboard->KillCheck(context->piece,context->target_piece)) {
-        EffectHandler::applyEffectToTargets(context->piece,STUN,*context->chessboard);
+        EffectHandler::applyEffectToTargets(context->piece,EffectInstance{STUN,2,2},*context->chessboard);
         CNT_StunEffect++;
+
 
     }
 }
 
 bool Medusa_Saber::canEvolve(void *arg) {
     if (evolved == false && CNT_StunEffect>1) {
+        std::cout << CNT_StunEffect << "Ready to evolve!!!"<<std::endl;
         return true;
     }
     return false;

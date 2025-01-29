@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug",
-		"source" : "C:/Users/david/OneDrive/Bureau/CHESS/Projet-Maker-echiquier/DeveloppementCpp"
+		"build" : "C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp/cmake-build-debug",
+		"source" : "C:/Users/david/OneDrive/Bureau/Chess/Projet-Maker-echiquier/DeveloppementCpp"
 	},
 	"version" : 
 	{
