@@ -3,3 +3,9 @@
 //
 
 #include "GameSystem.h"
+
+void GameSystemFunction::pieceInitialisation(Characters_List characters_list) {
+    chooseBlackPawn(Pieces* piece);
+    chooseWhitePawn(Pieces* piece);
+
+}

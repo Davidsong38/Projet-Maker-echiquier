@@ -4,6 +4,7 @@
 
 #ifndef GAMESYSTEM_H
 #define GAMESYSTEM_H
+#include "Characters_List.h"
 #include "Pieces.h"
 
 
@@ -21,7 +22,7 @@ class GameSystemFunction {
     private:
         int NB_Turn = 0;
     public:
-        void pieceInitialisation();
+        void pieceInitialisation(Characters_List characters_list);
         void chooseWhiteRook(Pieces* piece);
         void chooseBlackRook(Pieces* piece);
         void chooseWhitePawn(Pieces* piece);

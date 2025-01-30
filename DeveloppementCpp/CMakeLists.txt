@@ -33,4 +33,6 @@ add_executable(Chess main.cpp
         EffectHandler.cpp
         EffectHandler.h
         Context.h
+        Characters_List.cpp
+        Characters_List.h
 )
