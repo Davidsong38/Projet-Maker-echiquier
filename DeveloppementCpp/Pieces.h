@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 
+#include "Characters_List.h"
 #include "Effect_List.h"
 
 
@@ -24,15 +25,17 @@ class Pieces {
         bool isWhite = false;
         bool evolved = false;
         vector<EffectInstance> activeEffects ;
-
+        //vector<Character_Instance> characters ;
+        Characters_List characters;
+        Pieces_List pieces_origin;
 
     public:
 
 
-        explicit Pieces(int startX, int startY, string pieceName = "Unknown", bool white = false)
-        : coordX(startX), coordY(startY), name(std::move(pieceName)), isWhite(white)  {}
+        explicit Pieces(int startX, int startY, string pieceName = "Unknown", bool white = false, Characters_List hero, Pieces_List pieces_root)
+        : coordX(startX), coordY(startY), name(std::move(pieceName)), isWhite(white) , characters(hero) , pieces_origin(pieces_root) {}
 
-        explicit Pieces(string name);
+        //explicit Pieces(string name);
 
         virtual ~Pieces();
 
@@ -42,15 +45,29 @@ class Pieces {
         void setPosition(int newX,int newY);
 
         void addEffectStatus (EffectInstance effect_instance);
+        //void affectCharacter(const Character_Instance& character_instance);
         [[nodiscard]] bool hasEffectStatus (Effect_List effect) const;
         void updateEffectStatus ();
         void activateEffect(Effect_List);
         void displayEffect();
 
         [[nodiscard]] bool getIsWhite() const;
-
         [[nodiscard]] vector<EffectInstance> getActive_effects() const;
+        [[nodiscard]] Characters_List getCharacters() const;
+        [[nodiscard]] Pieces_List getPiecesOrigin() const;
 
+        static bool isPawn(Pieces_List piece);
+        static bool isKnight(Pieces_List piece);
+        static bool isBishop(Pieces_List piece);
+        static bool isRook(Pieces_List piece);
+        static bool isQueen(Pieces_List piece);
+        static bool isKing(Pieces_List piece);
+
+
+
+        // [[nodiscard]] vector<Character_Instance> getCharacters() const {
+      //     return characters;
+      // }
 
         [[nodiscard]] virtual vector<pair<int, int>> getMoves() const = 0;
         [[nodiscard]] virtual vector<pair<int, int>> getEffectRange(Effect_List effect) const = 0;

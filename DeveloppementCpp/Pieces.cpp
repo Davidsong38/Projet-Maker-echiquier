@@ -6,7 +6,7 @@
 #include <iostream>
 #include <utility>
 #include "Effect_List.h"
-Pieces::Pieces(string name) : name(std::move(name)) {}
+//Pieces::Pieces(string name) : name(std::move(name)) {}
 Pieces::~Pieces() = default;
 
 string Pieces::getName() const {
@@ -31,6 +31,17 @@ void Pieces::setPosition(int newX, int newY) {
 void Pieces::addEffectStatus(EffectInstance effect_instance) {
     activeEffects.emplace_back(effect_instance.getEffect(),effect_instance.getEffectDuration(),effect_instance.getEffectDuration());
 }
+
+Characters_List Pieces::getCharacters() const {
+    return characters;
+}
+Pieces_List Pieces::getPiecesOrigin() const {
+    return pieces_origin;
+}
+//void Pieces::affectCharacter(const Character_Instance& character_instance) {
+//    characters.emplace_back(character_instance);
+//}
+
 
 bool Pieces::hasEffectStatus(Effect_List effect) const {
     for (const auto& e : activeEffects) {
@@ -78,4 +89,49 @@ vector<EffectInstance> Pieces::getActive_effects() const {
     return activeEffects;
 }
 
+
+bool Pieces::isPawn(Pieces_List piece) {
+    if (piece == PAWN_BLACK_1 || piece == PAWN_BLACK_2 || piece == PAWN_BLACK_3 || piece == PAWN_BLACK_4
+        || piece == PAWN_BLACK_5 || piece == PAWN_BLACK_6 || piece == PAWN_BLACK_7 || piece == PAWN_BLACK_8
+        || piece == PAWN_WHITE_1 || piece == PAWN_WHITE_2 || piece == PAWN_WHITE_3 || piece == PAWN_WHITE_4
+        || piece == PAWN_WHITE_5 || piece == PAWN_WHITE_6 || piece == PAWN_WHITE_7 || piece == PAWN_WHITE_8) {
+        return true;
+        }
+    return false;
+}
+
+bool Pieces::isKnight(Pieces_List piece) {
+    if (piece == KNIGHT_BLACK_1 || piece == KNIGHT_BLACK_2 || piece == KNIGHT_WHITE_1 || piece == KNIGHT_WHITE_2) {
+        return true;
+    }
+    return false;
+}
+
+bool Pieces::isBishop(Pieces_List piece) {
+    if (piece == BISHOP_BLACK_1 || piece == BISHOP_BLACK_2 || piece == BISHOP_WHITE_1 || piece == BISHOP_WHITE_2) {
+        return true;
+    }
+    return false;
+}
+
+bool Pieces::isRook(Pieces_List piece) {
+    if (piece == ROOK_BLACK_1 || piece == ROOK_BLACK_2 || piece == ROOK_WHITE_1 || piece == ROOK_WHITE_2) {
+        return true;
+    }
+    return false;
+}
+
+bool Pieces::isQueen(Pieces_List piece) {
+    if (piece == QUEEN_BLACK || piece == QUEEN_WHITE) {
+        return true;
+    }
+    return false;
+}
+
+bool Pieces::isKing(Pieces_List piece) {
+    if (piece == KING_BLACK || piece == KING_WHITE) {
+        return true;
+    }
+    return false;
+}
 

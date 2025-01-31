@@ -3,6 +3,8 @@
 //
 
 #include "Chessboard.h"
+#include "Characters_List.h"
+#include "PIECES/Pawn.h"
 
 
 void Chessboard::placePiece(int to_coordX,int to_coordY, Pieces* piece) {
@@ -72,6 +74,22 @@ vector<pair<int, int>> Chessboard::getValidMoves(Pieces* piece) const {
             && isPathClear(piece->getCoordX(),piece->getCoordY(),to_coordX,to_coordY,piece)) {
             valid_moves.emplace_back(move);
 
+        }
+    }
+    if (Pieces::isPawn(piece->getPiecesOrigin())) {
+        int pawnDirection = piece->getIsWhite() ? -1 : 1;
+        int currentX = piece->getCoordX();
+        int currentY = piece->getCoordY();
+
+        vector<pair<int, int>> diagonalattack = {{pawnDirection, -1}, {pawnDirection, 1}};
+
+        for (const auto& offset : diagonalattack) {
+            int diagX = currentX + offset.first;
+            int diagY = currentY + offset.second;
+
+            if (isInGrid(diagX, diagY) && grid[diagX][diagY] != nullptr && !isAlly(piece, grid[diagX][diagY])) {
+                valid_moves.emplace_back(diagX, diagY);
+            }
         }
     }
     return valid_moves;

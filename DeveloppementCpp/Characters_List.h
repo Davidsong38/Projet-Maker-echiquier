@@ -38,12 +38,28 @@ enum Characters_List {
 };
 
 extern string Characters_List_to_string[CHARACTERS_COUNT];
-void loadCharatersList();
+void loadCharactersList();
 
-struct Character_Instance {
+/*struct Character_Instance {
     Characters_List character;
     Pieces_List piece_origin;
     string piece_name;
-};
+
+    explicit Character_Instance(Characters_List character,Pieces_List piece_origin);
+
+    [[nodiscard]] Characters_List getCharacter() const {
+        return character;
+    }
+
+    [[nodiscard]] Pieces_List getPieceOrigin() const {
+        return piece_origin;
+    }
+
+    [[nodiscard]] string getPieceName() const {
+        return piece_name;
+    }
+};*/
+
+
 
 #endif //CHARACTERS_LIST_H

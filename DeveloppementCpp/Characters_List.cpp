@@ -4,8 +4,10 @@
 
 #include "Characters_List.h"
 
+#include <utility>
+
 string Characters_List_to_string[CHARACTERS_COUNT];
-void loadCharacters_List() {
+void loadCharactersList() {
     Characters_List_to_string[MEDUSA_SABER]  = "Medusa Saber";
     Characters_List_to_string[MERLIN] = "Merlin";
     Characters_List_to_string[ASTOLFO] = "Astolfo";
@@ -29,3 +31,6 @@ void loadCharacters_List() {
     Characters_List_to_string[NEMO_MARINE] = "Nemo Marine";
     Characters_List_to_string[NOBU] = "Nobu";
 }
+
+//Character_Instance::Character_Instance(Characters_List character,Pieces_List piece_origin)
+//    :character(character), piece_origin(piece_origin), piece_name(Characters_List_to_string[character]) {}

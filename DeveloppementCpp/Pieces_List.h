@@ -10,17 +10,37 @@ using namespace std;
 
 
 enum Pieces_List {
-    PAWN_WHITE,
-    ROOK_WHITE,
-    KNIGHT_WHITE,
-    BISHOP_WHITE,
+    PAWN_WHITE_1,
+    PAWN_WHITE_2,
+    PAWN_WHITE_3,
+    PAWN_WHITE_4,
+    PAWN_WHITE_5,
+    PAWN_WHITE_6,
+    PAWN_WHITE_7,
+    PAWN_WHITE_8,
+    ROOK_WHITE_1,
+    ROOK_WHITE_2,
+    KNIGHT_WHITE_1,
+    KNIGHT_WHITE_2,
+    BISHOP_WHITE_1,
+    BISHOP_WHITE_2,
     QUEEN_WHITE,
     KING_WHITE,
     EMPTY,
-    PAWN_BLACK,
-    ROOK_BLACK,
-    KNIGHT_BLACK,
-    BISHOP_BLACK,
+    PAWN_BLACK_1,
+    PAWN_BLACK_2,
+    PAWN_BLACK_3,
+    PAWN_BLACK_4,
+    PAWN_BLACK_5,
+    PAWN_BLACK_6,
+    PAWN_BLACK_7,
+    PAWN_BLACK_8,
+    ROOK_BLACK_1,
+    ROOK_BLACK_2,
+    KNIGHT_BLACK_1,
+    KNIGHT_BLACK_2,
+    BISHOP_BLACK_1,
+    BISHOP_BLACK_2,
     QUEEN_BLACK,
     KING_BLACK,
     PIECE_COUNT,
@@ -32,12 +52,7 @@ void loadPiecesList();
 
 bool segregation_W(Pieces_List piece);
 bool segregation_B(Pieces_List piece);
-bool isPawn(Pieces_List piece);
-bool isRook(Pieces_List piece);
-bool isKnight(Pieces_List piece);
-bool isBishop(Pieces_List piece);
-bool isKing(Pieces_List piece);
-bool isQueen(Pieces_List piece);
+
 
 
 

@@ -1,19 +1,19 @@
 //
-// Created by david on 24/01/2025.
+// Created by david on 31/01/2025.
 //
 
-#ifndef MEDUSA_SABER_H
-#define MEDUSA_SABER_H
-#include "../Bishop.h"
+#ifndef USHIWAKAMARU_H
+#define USHIWAKAMARU_H
+#include "../Knight.h"
 
 
-class Medusa_Saber final : public Bishop{
+class Ushiwakamaru final : public Knight {
     protected :
         int CNT_StunEffect = 0;
     public:
-        Medusa_Saber(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
-             Pieces_List pieces_root)
-            : Bishop(startX, startY, pieceName, white, hero, pieces_root) {
+        Ushiwakamaru(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+            Pieces_List pieces_root)
+            : Knight(startX, startY, pieceName, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;
@@ -23,9 +23,8 @@ class Medusa_Saber final : public Bishop{
         void evolvedForm(void* arg) override;
 
 
-
 };
 
 
 
-#endif //MEDUSA_SABER_H
+#endif //USHIWAKAMARU_H

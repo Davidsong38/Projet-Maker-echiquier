@@ -1,19 +1,19 @@
 //
-// Created by david on 24/01/2025.
+// Created by david on 31/01/2025.
 //
 
-#ifndef MEDUSA_SABER_H
-#define MEDUSA_SABER_H
-#include "../Bishop.h"
+#ifndef NEMO_MARINE_H
+#define NEMO_MARINE_H
+#include "../Pawn.h"
 
 
-class Medusa_Saber final : public Bishop{
+class Nemo_Marine final: public Pawn  {
     protected :
         int CNT_StunEffect = 0;
     public:
-        Medusa_Saber(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
-             Pieces_List pieces_root)
-            : Bishop(startX, startY, pieceName, white, hero, pieces_root) {
+        Nemo_Marine(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+            Pieces_List pieces_root)
+            : Pawn(startX, startY, pieceName, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;
@@ -28,4 +28,4 @@ class Medusa_Saber final : public Bishop{
 
 
 
-#endif //MEDUSA_SABER_H
+#endif //NEMO_MARINE_H
