@@ -34,6 +34,7 @@ void GameSystem::handleInitialisation(void * arg) {
 
 void GameSystem::handleStartWhitePhase(void * arg) {
     auto * context = static_cast<context_type *>(arg);
+    
     setState(MOVING_WHITE_PHASE);
 
 
@@ -90,12 +91,14 @@ void GameSystem::handleEndGame(void* arg) {
 
 
 
-void GameSystem::choosePawn(Chessboard * board,int to_coordX, int to_coordY, bool isWhite) {
+void GameSystem::choosePawn(Chessboard * chessboard,int to_coordX, int to_coordY, bool isWhite) {
     int ID_character;
     cin >> ID_character;
     if (ID_character == 20) {
-        Nemo_Marine nemo_marine(to_coordX,to_coordY,isWhite,NEMO_MARINE,PAWN);
-        board->placePiece(nemo_marine.getCoordX(),nemo_marine.getCoordY(),&nemo_marine);
+        auto* nemo_marine = new Nemo_Marine(to_coordX,to_coordY,isWhite,NEMO_MARINE,PAWN);
+        EffectHandler::configureEffectHandler(*chessboard,nemo_marine);
+        chessboard->placePiece(nemo_marine->getCoordX(),nemo_marine->getCoordY(),nemo_marine);
+
     }
 }
 
@@ -103,9 +106,9 @@ void GameSystem::chooseBishop(Chessboard * chessboard,int to_coordX, int to_coor
     int ID_character;
     cin >> ID_character;
     if (ID_character == 0) {
-        Medusa_Saber medusa_saber(to_coordX,to_coordY,isWhite,MEDUSA_SABER,BISHOP);
-        EffectHandler::configureEffectHandler(*chessboard,&medusa_saber);
-        chessboard->placePiece(medusa_saber.getCoordX(),medusa_saber.getCoordY(),&medusa_saber);
+        auto *medusa_saber = new Medusa_Saber(to_coordX,to_coordY,isWhite,MEDUSA_SABER,BISHOP);
+        EffectHandler::configureEffectHandler(*chessboard,medusa_saber);
+        chessboard->placePiece(medusa_saber->getCoordX(),medusa_saber->getCoordY(),medusa_saber);
     }
 }
 
@@ -114,9 +117,9 @@ void GameSystem::chooseRook(Chessboard * chessboard,int to_coordX, int to_coordY
     int ID_character;
     cin >> ID_character;
     if (ID_character == 8) {
-        Arceuid arceuid(to_coordX,to_coordY,isWhite,ARCEUID,ROOK);
-        EffectHandler::configureEffectHandler(*chessboard,&arceuid);
-        chessboard->placePiece(arceuid.getCoordX(),arceuid.getCoordY(),&arceuid);
+        auto* arceuid = new Arceuid(to_coordX,to_coordY,isWhite,ARCEUID,ROOK);
+        EffectHandler::configureEffectHandler(*chessboard,arceuid);
+        chessboard->placePiece(arceuid->getCoordX(),arceuid->getCoordY(),arceuid);
     }
 }
 
@@ -124,29 +127,29 @@ void GameSystem::chooseKnight(Chessboard * chessboard,int to_coordX, int to_coor
     int ID_character;
     cin >> ID_character;
     if (ID_character == 4) {
-        Ushiwakamaru ushiwakamaru(to_coordX,to_coordY,isWhite,USHIWAKAMARU,KNIGHT);
-        EffectHandler::configureEffectHandler(*chessboard,&ushiwakamaru);
-        chessboard->placePiece(ushiwakamaru.getCoordX(),ushiwakamaru.getCoordY(),&ushiwakamaru);
+        auto* ushiwakamaru = new Ushiwakamaru(to_coordX,to_coordY,isWhite,USHIWAKAMARU,KNIGHT);
+        EffectHandler::configureEffectHandler(*chessboard,ushiwakamaru);
+        chessboard->placePiece(ushiwakamaru->getCoordX(),ushiwakamaru->getCoordY(),ushiwakamaru);
     }
 }
 
 void GameSystem::chooseQueen(Chessboard * chessboard,int to_coordX, int to_coordY,bool isWhite) {
     int ID_character;
     cin >> ID_character;
-    if (ID_character == 4) {
-        Sesshoin_Kiara sesshoin_kiara(to_coordX,to_coordY,isWhite,SESSHOIN_KIARA,QUEEN);
-        EffectHandler::configureEffectHandler(*chessboard,&sesshoin_kiara);
-        chessboard->placePiece(sesshoin_kiara.getCoordX(),sesshoin_kiara.getCoordY(),&sesshoin_kiara);
+    if (ID_character == 12) {
+        auto* sesshoin_kiara =new Sesshoin_Kiara(to_coordX,to_coordY,isWhite,SESSHOIN_KIARA,QUEEN);
+        EffectHandler::configureEffectHandler(*chessboard,sesshoin_kiara);
+        chessboard->placePiece(sesshoin_kiara->getCoordX(),sesshoin_kiara->getCoordY(),sesshoin_kiara);
     }
 }
 
 void GameSystem::chooseKing(Chessboard * chessboard,int to_coordX, int to_coordY,bool isWhite) {
     int ID_character;
     cin >> ID_character;
-    if (ID_character == 4) {
-        Artoria artoria(to_coordX,to_coordY,isWhite,ARTORIA,KING);
-        EffectHandler::configureEffectHandler(*chessboard,&artoria);
-        chessboard->placePiece(artoria.getCoordX(),artoria.getCoordY(),&artoria);
+    if (ID_character == 16) {
+        auto* artoria = new Artoria(to_coordX,to_coordY,isWhite,ARTORIA,KING);
+        EffectHandler::configureEffectHandler(*chessboard,artoria);
+        chessboard->placePiece(artoria->getCoordX(),artoria->getCoordY(),artoria);
     }
 }
 
@@ -154,45 +157,45 @@ void GameSystem::chooseKing(Chessboard * chessboard,int to_coordX, int to_coordY
 void GameSystem::pieceInitialisation(Chessboard* chessboard) {
     cout << "Choose Black Pawns" << endl;
     for (int i = 0; i <= 7; i++) {
-        choosePawn(chessboard,i,1,false);
+        choosePawn(chessboard,1,i,false);
         chessboard->displayBoard();
     }
     cout << "Choose White Pawns" << endl;
     for (int i = 0; i <= 7; i++) {
-        choosePawn(chessboard,i,6,true);
+        choosePawn(chessboard,6,i,true);
     }
     cout << "Choose Black Rook1" << endl;
     chooseRook(chessboard,0,0,false);
     cout << "Choose White Rook1" << endl;
-    chooseRook(chessboard,0,7,true);
+    chooseRook(chessboard,7,0,true);
     cout << "Choose Black Rook2" << endl;
-    chooseRook(chessboard,7,0,false);
+    chooseRook(chessboard,0,7,false);
     cout << "Choose White Rook2" << endl;
     chooseRook(chessboard,7,7,true);
     cout << "Choose Black Knight1" << endl;
-    chooseKnight(chessboard,1,0,false);
+    chooseKnight(chessboard,0,1,false);
     cout << "Choose White Knight1" << endl;
-    chooseKnight(chessboard,1,7,true);
+    chooseKnight(chessboard,7,1,true);
     cout << "Choose Black Knight2" << endl;
-    chooseKnight(chessboard,6,0,false);
+    chooseKnight(chessboard,0,6,false);
     cout << "Choose White Knight2" << endl;
-    chooseKnight(chessboard,6,7,true);
+    chooseKnight(chessboard,7,6,true);
     cout << "Choose Black Bishop1" << endl;
-    chooseBishop(chessboard,2,0,false);
+    chooseBishop(chessboard,0,2,false);
     cout << "Choose White Bishop1" << endl;
-    chooseBishop(chessboard,2,7,true);
+    chooseBishop(chessboard,7,2,true);
     cout << "Choose Black Bishop2" << endl;
-    chooseBishop(chessboard,5,0,false);
+    chooseBishop(chessboard,0,5,false);
     cout << "Choose White Bishop2" << endl;
-    chooseBishop(chessboard,5,7,true);
+    chooseBishop(chessboard,7,5,true);
     cout << "Choose Black Queen" << endl;
-    chooseQueen(chessboard,3,0,false);
+    chooseQueen(chessboard,0,3,false);
     cout << "Choose White Queen" << endl;
-    chooseQueen(chessboard,3,7,true);
+    chooseQueen(chessboard,7,3,true);
     cout << "Choose Black King" << endl;
-    chooseKing(chessboard,4,0,false);
+    chooseKing(chessboard,0,4,false);
     cout << "Choose White King" << endl;
-    chooseKing(chessboard,4,7,true);
+    chooseKing(chessboard,7,4,true);
 
 }
 

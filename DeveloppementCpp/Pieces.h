@@ -33,13 +33,13 @@ class Pieces {
 
 
         explicit Pieces(int startX, int startY, bool white, Characters_List hero, Pieces_List pieces_root)
-        : coordX(startX), coordY(startY),isWhite(white) , characters(hero) , pieces_origin(pieces_root), name(Characters_List_to_string[hero]) {}
+        : coordX(startX), coordY(startY),isWhite(white) , characters(hero) , pieces_origin(pieces_root), name(Characters_List_to_string[characters]) {}
 
         //explicit Pieces(string name);
 
         virtual ~Pieces();
 
-        [[nodiscard]] string getName() const;
+        [[nodiscard]] string getName();
         [[nodiscard]] int getCoordX() const;
         [[nodiscard]] int getCoordY() const;
         void setPosition(int newX,int newY);

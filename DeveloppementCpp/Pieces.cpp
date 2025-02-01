@@ -9,7 +9,7 @@
 //Pieces::Pieces(string name) : name(std::move(name)) {}
 Pieces::~Pieces() = default;
 
-string Pieces::getName() const {
+string Pieces::getName() {
     return name;
 }
 
