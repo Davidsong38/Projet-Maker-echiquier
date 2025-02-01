@@ -11,9 +11,9 @@ class Ushiwakamaru final : public Knight {
     protected :
         int CNT_StunEffect = 0;
     public:
-        Ushiwakamaru(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+        Ushiwakamaru(int startX, int startY, bool white, Characters_List hero,
             Pieces_List pieces_root)
-            : Knight(startX, startY, pieceName, white, hero, pieces_root) {
+            : Knight(startX, startY, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;

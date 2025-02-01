@@ -20,7 +20,7 @@ void EffectHandler::addEffectBehavior(Effect_List effect, function<void()> behav
         effectBehaviors[effect] = std::move(behavior);
 }
 
-void EffectHandler::configureEffectHandler(EffectHandler &handler, Chessboard &board, Pieces *piece) {
+void EffectHandler::configureEffectHandler(Chessboard &board, Pieces *piece) {
         addEffectBehavior(ALLY_TELEPORT, [&board,piece]() {
         int toX = 0;
         int toY = 0;

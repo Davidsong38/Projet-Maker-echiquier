@@ -11,9 +11,9 @@ class Medusa_Saber final : public Bishop{
     protected :
         int CNT_StunEffect = 0;
     public:
-        Medusa_Saber(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+        Medusa_Saber(int startX, int startY, bool white, Characters_List hero,
              Pieces_List pieces_root)
-            : Bishop(startX, startY, pieceName, white, hero, pieces_root) {
+            : Bishop(startX, startY, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;

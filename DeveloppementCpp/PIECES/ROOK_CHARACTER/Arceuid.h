@@ -11,9 +11,9 @@ class Arceuid final: public Rook{
     protected :
         int CNT_StunEffect = 0;
     public:
-        Arceuid(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+        Arceuid(int startX, int startY, bool white, Characters_List hero,
             Pieces_List pieces_root)
-            : Rook(startX, startY, pieceName, white, hero, pieces_root) {
+            : Rook(startX, startY, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;

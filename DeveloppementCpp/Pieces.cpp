@@ -90,46 +90,43 @@ vector<EffectInstance> Pieces::getActive_effects() const {
 }
 
 
-bool Pieces::isPawn(Pieces_List piece) {
-    if (piece == PAWN_BLACK_1 || piece == PAWN_BLACK_2 || piece == PAWN_BLACK_3 || piece == PAWN_BLACK_4
-        || piece == PAWN_BLACK_5 || piece == PAWN_BLACK_6 || piece == PAWN_BLACK_7 || piece == PAWN_BLACK_8
-        || piece == PAWN_WHITE_1 || piece == PAWN_WHITE_2 || piece == PAWN_WHITE_3 || piece == PAWN_WHITE_4
-        || piece == PAWN_WHITE_5 || piece == PAWN_WHITE_6 || piece == PAWN_WHITE_7 || piece == PAWN_WHITE_8) {
+bool Pieces::isPawn() const {
+    if (pieces_origin == PAWN){
         return true;
         }
     return false;
 }
 
-bool Pieces::isKnight(Pieces_List piece) {
-    if (piece == KNIGHT_BLACK_1 || piece == KNIGHT_BLACK_2 || piece == KNIGHT_WHITE_1 || piece == KNIGHT_WHITE_2) {
+bool Pieces::isKnight() const {
+    if (pieces_origin == KNIGHT) {
         return true;
     }
     return false;
 }
 
-bool Pieces::isBishop(Pieces_List piece) {
-    if (piece == BISHOP_BLACK_1 || piece == BISHOP_BLACK_2 || piece == BISHOP_WHITE_1 || piece == BISHOP_WHITE_2) {
+bool Pieces::isBishop() const {
+    if (pieces_origin == BISHOP) {
         return true;
     }
     return false;
 }
 
-bool Pieces::isRook(Pieces_List piece) {
-    if (piece == ROOK_BLACK_1 || piece == ROOK_BLACK_2 || piece == ROOK_WHITE_1 || piece == ROOK_WHITE_2) {
+bool Pieces::isRook() const {
+    if (pieces_origin == ROOK) {
         return true;
     }
     return false;
 }
 
-bool Pieces::isQueen(Pieces_List piece) {
-    if (piece == QUEEN_BLACK || piece == QUEEN_WHITE) {
+bool Pieces::isQueen() const {
+    if (pieces_origin == QUEEN) {
         return true;
     }
     return false;
 }
 
-bool Pieces::isKing(Pieces_List piece) {
-    if (piece == KING_BLACK || piece == KING_WHITE) {
+bool Pieces::isKing() const {
+    if (pieces_origin == KING) {
         return true;
     }
     return false;

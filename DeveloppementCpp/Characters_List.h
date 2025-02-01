@@ -6,8 +6,6 @@
 #define CHARACTERS_LIST_H
 #include <string>
 
-#include "Pieces.h"
-#include "Pieces_List.h"
 using namespace std;
 
 enum Characters_List {

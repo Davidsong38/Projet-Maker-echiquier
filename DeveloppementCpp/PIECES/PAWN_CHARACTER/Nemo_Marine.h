@@ -11,9 +11,9 @@ class Nemo_Marine final: public Pawn  {
     protected :
         int CNT_StunEffect = 0;
     public:
-        Nemo_Marine(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+        Nemo_Marine(int startX, int startY, bool white, Characters_List hero,
             Pieces_List pieces_root)
-            : Pawn(startX, startY, pieceName, white, hero, pieces_root) {
+            : Pawn(startX, startY, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;

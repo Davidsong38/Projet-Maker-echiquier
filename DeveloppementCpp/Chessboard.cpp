@@ -76,7 +76,7 @@ vector<pair<int, int>> Chessboard::getValidMoves(Pieces* piece) const {
 
         }
     }
-    if (Pieces::isPawn(piece->getPiecesOrigin())) {
+    if (piece->isPawn()) {
         int pawnDirection = piece->getIsWhite() ? -1 : 1;
         int currentX = piece->getCoordX();
         int currentY = piece->getCoordY();
@@ -109,7 +109,7 @@ bool Chessboard::isMovePossible(Pieces* piece,int to_coordX, int to_coordY) cons
 void Chessboard::movePiece(Pieces* piece, int to_coordX, int to_coordY) {
     int coordX = piece->getCoordX();
     int coordY = piece->getCoordY();
-    if (isMovePossible(piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr) {
+    if (isMovePossible(piece,to_coordX,to_coordY) && grid[coordX][coordY] != nullptr && isMoveable(piece)) {
         Pieces* target_piece = grid[to_coordX][to_coordY];
         if (target_piece == nullptr) {
             grid[to_coordX][to_coordY] = piece ;      // Place la pièce dans la nouvelle case

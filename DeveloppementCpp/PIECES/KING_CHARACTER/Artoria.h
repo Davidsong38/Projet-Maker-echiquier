@@ -11,9 +11,9 @@ class Artoria final: public King{
     protected :
         int CNT_StunEffect = 0;
     public:
-        Artoria(int startX, int startY, const string &pieceName, bool white, Characters_List hero,
+        Artoria(int startX, int startY, bool white, Characters_List hero,
             Pieces_List pieces_root)
-            : King(startX, startY, pieceName, white, hero, pieces_root) {
+            : King(startX, startY, white, hero, pieces_root) {
         }
 
         [[nodiscard]] vector<Effect_List> getCasterEffects() const override;

@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 #include <memory>
-
+#include "Pieces_List.h"
 #include "Characters_List.h"
 #include "Effect_List.h"
 
@@ -21,19 +21,19 @@ class Pieces {
     protected:
         int coordX;
         int coordY;
-        string name;
         bool isWhite = false;
         bool evolved = false;
         vector<EffectInstance> activeEffects ;
         //vector<Character_Instance> characters ;
         Characters_List characters;
         Pieces_List pieces_origin;
+        string name;
 
     public:
 
 
-        explicit Pieces(int startX, int startY, string pieceName = "Unknown", bool white = false, Characters_List hero, Pieces_List pieces_root)
-        : coordX(startX), coordY(startY), name(std::move(pieceName)), isWhite(white) , characters(hero) , pieces_origin(pieces_root) {}
+        explicit Pieces(int startX, int startY, bool white, Characters_List hero, Pieces_List pieces_root)
+        : coordX(startX), coordY(startY),isWhite(white) , characters(hero) , pieces_origin(pieces_root), name(Characters_List_to_string[hero]) {}
 
         //explicit Pieces(string name);
 
@@ -56,12 +56,12 @@ class Pieces {
         [[nodiscard]] Characters_List getCharacters() const;
         [[nodiscard]] Pieces_List getPiecesOrigin() const;
 
-        static bool isPawn(Pieces_List piece);
-        static bool isKnight(Pieces_List piece);
-        static bool isBishop(Pieces_List piece);
-        static bool isRook(Pieces_List piece);
-        static bool isQueen(Pieces_List piece);
-        static bool isKing(Pieces_List piece);
+        [[nodiscard]] bool isPawn() const;
+        [[nodiscard]] bool isKnight() const;
+        [[nodiscard]] bool isBishop() const;
+        [[nodiscard]] bool isRook() const;
+        [[nodiscard]] bool isQueen() const;
+        [[nodiscard]] bool isKing() const;
 
 
 
